@@ -1,24 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOAL LATIHAN UJIAN PPG - UbD, Berdiferensiasi, TaRL, CRT</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
-    h1, h2 { text-align: center; }
-    .soal { margin-bottom: 30px; }
-    .jawaban { margin-top: 10px; color: green; font-weight: bold; display: none; }
-    .pembahasan { font-style: italic; display: none; }
-    button { margin-top: 10px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pembelajaran Sosial Emosional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Kuis PPG</h1>
-  <h2>UbD, Pembelajaran Berdiferensiasi, TaRL, CRT</h2>
-
-  <!-- Soal 1-100 -->
+<body class="bg-gray-100 font-sans text-gray-800">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-800 text-white p-6 hidden md:block">
+      <h2 class="text-xl font-bold mb-6">Menu Materi</h2>
+      <nav class="space-y-4">
+        <a href="asesmen.html" class="block hover:bg-blue-700 px-4 py-2 rounded">Asesmen</a>
+        <a href="sosial-emosional.html" class="block bg-blue-600 px-4 py-2 rounded font-semibold">Pembelajaran Sosial Emosional</a>
+        <a href="filosofi-nilai.html" class="block hover:bg-blue-700 px-4 py-2 rounded">Filosofi Pendidikan Nilai</a>
+        <a href="soal.html" class="block hover:bg-blue-700 px-4 py-2 rounded">Latihan Soal</a>
+      </nav>
+    </aside>
+<!-- Konten -->
+    <main class="flex-1 p-6">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-blue-800 mb-4">SOAL Latihan UbD, Pembelajaran Berdiferensiasi, TaRL, CRT</h1>
+ <!-- Soal 1-100 -->
   <div id="kuis-container"></div>
 
   <script>
@@ -152,3 +156,4 @@
   </script>
 </body>
 </html>
+
