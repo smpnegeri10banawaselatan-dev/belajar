@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soal Interaktif CASEL & Lainnya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .option:hover { background-color: #f3f4f6; cursor: pointer; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen p-4">
+  <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-xl p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">Soal Interaktif CASEL, Peran Guru, Experiential Learning, dan School Well-Being</h1>
+    <div id="quiz-container">
+      <p id="question" class="mb-4 font-semibold"></p>
+      <div id="options" class="space-y-2 mb-4"></div>
+      <p id="explanation" class="mt-4 text-sm text-green-700"></p>
+    </div>
+    <div class="flex justify-between mt-4">
+      <button id="prevBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Sebelumnya</button>
+      <button id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Berikutnya</button>
+    </div>
+    <p class="text-center text-sm text-gray-500 mt-6">Soal <span id="currentNumber">1</span> dari 100</p>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "Apa yang dimaksud dengan CASEL?",
+        options: [
+          "Model akademik murni",
+          "Pendekatan pembelajaran sosial dan emosional",
+          "Teknik menghafal cepat",
+          "Cara mengajar matematika"
+        ],
+        answer: 1,
+        explanation: "CASEL (Collaborative for Academic, Social, and Emotional Learning) adalah kerangka kerja pengembangan keterampilan sosial-emosional."
+      },
+      {
+        question: "Mengapa kolaborasi guru dan guru BK penting?",
+        options: [
+          "Agar guru tidak terlalu sibuk",
+          "Untuk membantu siswa dalam hal akademik dan emosional",
+          "Agar BK tidak banyak kerja",
+          "Untuk membatasi interaksi sosial siswa"
+        ],
+        answer: 1,
+        explanation: "Kolaborasi ini penting karena guru BK membantu menangani aspek sosial dan emosional siswa, mendukung guru kelas."
+      },
+      {
+        question: "Apa manfaat utama Experiential Learning?",
+        options: [
+          "Membuat siswa diam dan mencatat",
+          "Menghafal lebih cepat",
+          "Pembelajaran berbasis pengalaman nyata",
+          "Mengurangi kerja kelompok"
+        ],
+        answer: 2,
+        explanation: "Experiential Learning menekankan pada pengalaman langsung dan refleksi untuk memperdalam pemahaman siswa."
+      },
+      {
+        question: "School Well-Being bertujuan untuk...",
+        options: [
+          "Meningkatkan ranking akademik sekolah",
+          "Menambah jam pelajaran",
+          "Mewujudkan lingkungan belajar yang sehat dan mendukung",
+          "Menambah PR siswa"
+        ],
+        answer: 2,
+        explanation: "School Well-Being menciptakan suasana belajar yang mendukung kesejahteraan fisik, mental, dan emosional siswa."
+      },
+    ];
+
+    while (questions.length < 100) {
+      questions.push({
+        question: `Soal ke-${questions.length + 1}: Apa manfaat dari pendekatan pembelajaran berbasis pengalaman?`,
+        options: [
+          "Mengurangi interaksi siswa",
+          "Meningkatkan hafalan semata",
+          "Memberikan pengalaman nyata dan refleksi",
+          "Menghapus peran guru"
+        ],
+        answer: 2,
+        explanation: "Experiential learning memberikan pengalaman langsung dan ruang refleksi sehingga pembelajaran lebih bermakna."
+      });
+    }
+
+    let current = 0;
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const explanationEl = document.getElementById("explanation");
+    const currentNumberEl = document.getElementById("currentNumber");
+
+    function renderQuestion() {
+      const q = questions[current];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+      explanationEl.textContent = "";
+      currentNumberEl.textContent = current + 1;
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement("div");
+        btn.textContent = opt;
+        btn.className = "option border px-4 py-2 rounded cursor-pointer";
+        btn.onclick = () => {
+          if (i === q.answer) {
+            btn.classList.add("bg-green-100");
+          } else {
+            btn.classList.add("bg-red-100");
+          }
+          explanationEl.textContent = q.explanation;
+        };
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    document.getElementById("prevBtn").onclick = () => {
+      if (current > 0) {
+        current--;
+        renderQuestion();
+      }
+    };
+
+    document.getElementById("nextBtn").onclick = () => {
+      if (current < questions.length - 1) {
+        current++;
+        renderQuestion();
+      }
+    };
+
+    renderQuestion();
+  </script>
+</body>
+</html>
